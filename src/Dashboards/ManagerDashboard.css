@@ -1,0 +1,163 @@
+/* ManagerDashboard.css */
+
+.manager-dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.create-ticket {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.create-ticket h2 {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.create-ticket form input,
+.create-ticket form textarea,
+.create-ticket form select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.create-ticket form input:focus,
+.create-ticket form textarea:focus,
+.create-ticket form select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.create-ticket form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.create-ticket form button:hover {
+  background-color: #0056b3;
+}
+
+/* Tickets List */
+.tickets-list {
+  margin-top: 40px;
+}
+
+.ticket-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  transition: box-shadow 0.3s;
+}
+
+.ticket-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.ticket-card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Button for showing assigned tickets */
+.show-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.show-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Employees List */
+.employees-list {
+  margin-top: 20px;
+}
+
+.employee-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f1f8ff;
+}
+
+.employee-card h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.employee-card p {
+  font-size: 14px;
+  color: #333;
+}
+
+.employee-card ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.employee-card li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Smooth layout and spacing */
+.manager-dashboard .tickets-list,
+.manager-dashboard .employees-list {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .manager-dashboard {
+    padding: 10px;
+  }
+
+  .create-ticket,
+  .ticket-card,
+  .employee-card {
+    padding: 10px;
+  }
+}
+
+
+
+
+
