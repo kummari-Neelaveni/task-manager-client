@@ -69,9 +69,19 @@ const Login = ({setUser}) => {
           onChange={handleChange}
           className="w-full border p-2 mb-3 rounded"
         />
+        <select
+          name="role"
+          className="form-select mb-3"
+          value={form.role}
+          onChange={handleChange}
+        >
+          <option value="manager">Manager</option>
+          <option value="employee">Employee</option>
+          <option value="admin">Admin</option>
+        </select>
         <button
           type="submit"
-          className="bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-600"
+          className="btn btn-primary w-100"
         >
           Login
         </button>

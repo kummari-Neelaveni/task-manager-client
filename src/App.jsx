@@ -5,7 +5,7 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
-
+import Navbarr from './components/Navbar/Navbar';
 import Signup from './pages/signup';
 import Login from './pages/Login';
 import { useState } from 'react';
@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <div>
-    <Router>
+   <Navbarr/>
       <Routes>
         <Route path="/login" element={<Login setUser={setUser} />}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
@@ -46,7 +46,7 @@ const App = () => {
           }
         />
       </Routes>
-    </Router>
+ 
     </div>
   )
 }
