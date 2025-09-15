@@ -22,6 +22,7 @@ const App = () => {
     <div>
    <Navbarr/>
       <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login setUser={setUser} />}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
          {/* Role-based dashboards */}
