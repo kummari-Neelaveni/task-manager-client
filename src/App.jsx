@@ -6,7 +6,7 @@ import {
   Navigate
 } from "react-router-dom";
 import Navbarr from './components/Navbar/Navbar';
-import Signup from './pages/signup';
+import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { useState } from 'react';
 import ManagerDashboard from './Dashboards/ManagerDashboard';
