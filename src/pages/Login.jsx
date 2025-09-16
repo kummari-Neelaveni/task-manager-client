@@ -19,14 +19,19 @@ const Login = ({setUser}) => {
     e.preventDefault();
     // Dummy auth logic
     if (!form.email || !form.password) {
+           alert("all fields are required")
       return toast.error("All fields are required");
+ 
     }
+    
     try {
       const results = await axios.post(`${baseURL}/auth/login`, {
         email: form.email,
         password: form.password,
+        role: form.role,
       });
-      toast.success(results.data.message);
+      toast.success(results.data.message||"login successful");
+      alert("login successful")
       if (results?.data?.user.role === "employee") {
         navigate("/employee");
         setUser(results?.data?.user);
@@ -42,8 +47,11 @@ const Login = ({setUser}) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message||"login failed");
+    alert("email/password incorrect crediatials")
+     
     }
+
   };
 
   return (

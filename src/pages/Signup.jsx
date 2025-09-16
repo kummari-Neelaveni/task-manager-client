@@ -22,7 +22,9 @@ const Signup = () => {
     e.preventDefault();
 
     if (!form.username || !form.email || !form.name || !form.password || !form.role) {
+            alert("All fields (including role) are required")
       return toast.error("All fields (including role) are required");
+
     }
 
     try {
@@ -35,11 +37,13 @@ const Signup = () => {
       });
 
       toast.success("Signup successful! Please login.");
+      alert("Signup successful! Please login.")
       navigate("/login");
     } catch (error) {
       console.log(error.response);
       toast.error(error.response?.data?.message || "Signup failed");
     }
+    alert("signup failed")
   };
 
   return (
