@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css"; // custom styling
+import "./Navbar.css";
 
-const Navbarr = ({ user, setUser }) => {
+const Navbarr = ({ setUser }) => {
+  const [user, setLocalUser] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if (savedUser) setLocalUser(savedUser);
+  }, []);
+
   const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem("user"); // remove saved user
+    setLocalUser(null);
+    setUser(null); // update parent state
+    localStorage.removeItem("user");
     navigate("/login");
   };
 
   return (
     <Navbar expand="lg" className="custom-navbar shadow-sm">
       <Container>
-        {/* Brand */}
         <Navbar.Brand as={Link} to="/" className="fw-bold brand-text">
           WorkFlow Hub
         </Navbar.Brand>
 
-        {/* Toggle for mobile */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-        {/* Collapse */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex align-items-center gap-2">
             {!user ? (
@@ -74,5 +77,6 @@ const Navbarr = ({ user, setUser }) => {
 };
 
 export default Navbarr;
+
 
 
