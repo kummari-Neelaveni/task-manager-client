@@ -78,25 +78,27 @@ import React, { useEffect, useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbarr = ({ setUser }) => {
-  const [user, setLocalUser] = useState(null);
+const Navbarr = () => {
+  const [user, setUser] = useState(null);
+  const location = useLocation();
   const navigate = useNavigate();
 
-  // Get user from localStorage on component mount
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
-    if (savedUser) setLocalUser(savedUser);
+    if (savedUser) setUser(savedUser);
   }, []);
 
   const handleLogout = () => {
-    setLocalUser(null);
     setUser(null);
     localStorage.removeItem("user");
     navigate("/login");
   };
+
+  // Hide Signup/Login if user is logged in
+  const showAuthButtons = !user && !["/login", "/signup"].includes(location.pathname);
 
   return (
     <Navbar expand="lg" className="custom-navbar shadow-sm">
@@ -108,24 +110,9 @@ const Navbarr = ({ setUser }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex align-items-center gap-2">
-            {!user ? (
+            {user ? (
               <>
-                <Link to="/signup">
-                  <Button variant="outline-light" className="px-4">
-                    Signup
-                  </Button>
-                </Link>
-                <Link to="/login">
-                  <Button variant="light" className="px-4">
-                    Login
-                  </Button>
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link
-                  to={user.role === "manager" ? "/manager" : "/employee"}
-                >
+                <Link to={user.role === "manager" ? "/manager" : "/employee"}>
                   <Button variant="outline-light" className="px-4">
                     {user.role === "manager"
                       ? "Manager Dashboard"
@@ -140,6 +127,21 @@ const Navbarr = ({ setUser }) => {
                   Logout
                 </Button>
               </>
+            ) : (
+              showAuthButtons && (
+                <>
+                  <Link to="/signup">
+                    <Button variant="outline-light" className="px-4">
+                      Signup
+                    </Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button variant="light" className="px-4">
+                      Login
+                    </Button>
+                  </Link>
+                </>
+              )
             )}
           </Nav>
         </Navbar.Collapse>
@@ -149,6 +151,7 @@ const Navbarr = ({ setUser }) => {
 };
 
 export default Navbarr;
+
 
 
 
